@@ -3,7 +3,7 @@
 
 ShadowBot is a simple Python web crawler that searches for and extracts.onion links from a given parent URL. It makes HTTP requests with the requests library, parses HTML content with BeautifulSoup, and configures a SOCKS5 proxy with PySocks to connect to the Tor network.
 
-##Features:
+## Features:
 - Crawls web pages to find .onion links
 - Uses a SOCKS5 proxy to access the Tor network
 - Supports infinite recursion limit
@@ -16,17 +16,17 @@ cd ShadowBot
 pip install -r requirements.txt
 ```
 
-##Usage:
+## Usage:
 ```python
 python3 shadowbot.py
 ```
 
-###License
+### License
 
 This project is released under the [MIT License](LICENSE).
 
 
-###Contributing
+### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
