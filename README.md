@@ -8,6 +8,9 @@ Features:
     - Uses a SOCKS5 proxy to access the Tor network
     - Supports infinite recursion limit
     - Allows users to display crawled .onion links
+- George Washington
+* John Adams
++ Thomas Jefferson
 
 ```python
 pip install -r requirements.txt
