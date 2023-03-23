@@ -5,7 +5,9 @@ from queue import Queue
 import socks
 import socket
 import signal
+import time
 
+f = open('links.txt','w',encoding = 'utf-8')
 
 # Configure the SOCKS proxy
 socks.set_default_proxy(socks.SOCKS5, "localhost", 9050)
@@ -57,24 +59,34 @@ while not queue.empty() and len(visited) < MAX_RECURSION:
         count+=1
     except KeyboardInterrupt:
         print("\n\n\n---------------------------------------------------------------------------")
-        print("\nKeyboardInterrupt detected! Exiting the program.")
+        print("\nKeyboardInterrupt detected! Accessing Crawler Control.")
         try:
             final_links = [i for i in tot_web if '.onion' in i]
-        except TypeError:
-            pass
-        finally:
-            print("\nTotal links crawled",len(tot_web))
-            print("\nTotal onion links :",len(final_links))
             print("\n---------------------------------------------------------------------------")
-            command = input('''y: display onion links and continue crawling \nd: continue without displaying onion links\nx:exit crawling (y/d/x) : ''')
-            if(command == 'y'):
+            command = input('''d: display onion links and continue crawling \nc: continue without displaying onion links\nx:exit crawling \nEnter (d/c/x) : ''')
+            if(command == 'd'):
+                print("\nTotal onion links :",len(final_links))
+                print("\nTotal links crawled",len(tot_web))
                 [print(i) for i in final_links]
                 print("\n continuing to Crawl chief :) \n")
-            elif command == 'd':
-                pass
-            else:
+            elif command == 'c':
+                print("\nTotal onion links :",len(final_links))
+                print("\nTotal links crawled",len(tot_web))
+                print("\n continuing to Crawl chief :) \n")
+            elif command == 'x':
+                save = input("Do you want to save? (y/n): ")
+                if save == 'y':
+                    print("saving....")
+                    for line in final_links:
+                        f.write(line)
+                        f.write("\n")
+                elif save == 'n':
+                    print("exited without saving links.")
+                time.sleep(1)
                 print("Night Night :) im going back to the shadows!")
                 break
+        except TypeError:
+            pass 
     except:
         print("Access Denied")
 
