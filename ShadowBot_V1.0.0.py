@@ -58,16 +58,20 @@ while not queue.empty() and len(visited) < MAX_RECURSION:
     except KeyboardInterrupt:
         print("\n\n\n---------------------------------------------------------------------------")
         print("\nKeyboardInterrupt detected! Exiting the program.")
-        final_links = [i for i in tot_web if '.onion' in i]
-        print("\nTotal links crawled",len(tot_web))
-        print("\nTotal onion links :",len(final_links))
-        print("\n---------------------------------------------------------------------------")
-        display = input("display onion links (y/n) : ")
-        if(display == 'y'):
-            [print(i) for i in final_links]
-        else:
-            print("Night Night :) im going back to the shadows!")
-        break
+        try:
+            final_links = [i for i in tot_web if '.onion' in i]
+        except TypeError:
+            pass
+        finally:
+            print("\nTotal links crawled",len(tot_web))
+            print("\nTotal onion links :",len(final_links))
+            print("\n---------------------------------------------------------------------------")
+            display = input("display onion links (y/n) : ")
+            if(display == 'y'):
+                [print(i) for i in final_links]
+            else:
+                print("Night Night :) im going back to the shadows!")
+            break
     except:
         print("Access Denied")
 
