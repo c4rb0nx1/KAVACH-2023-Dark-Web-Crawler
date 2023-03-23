@@ -1,5 +1,5 @@
 # ShadowBot V1.X.X
-### KAVACH-2023 PSID: KVH-006 (Dark Web Crawler)
+## KAVACH-2023 PSID: KVH-006 (Dark Web Crawler)
 
 ShadowBot is a simple Python web crawler that searches for and extracts.onion links from a given parent URL. It makes HTTP requests with the requests library, parses HTML content with BeautifulSoup, and configures a SOCKS5 proxy with PySocks to connect to the Tor network.
 
