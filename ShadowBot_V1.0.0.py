@@ -5,8 +5,6 @@ from urllib.parse import urlparse, urljoin
 from queue import Queue
 import socks
 import socket
-import signal
-
 
 # Configure the SOCKS proxy
 socks.set_default_proxy(socks.SOCKS5, "localhost", 9050)
