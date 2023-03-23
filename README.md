@@ -23,7 +23,7 @@ python3 shadowbot.py
 
 ### License
 
-This project is released under the MIT License. Copyright (c) 2023 [c4rb0nx1]
+This project is released under the [MIT License](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt). Copyright (c) 2023 [c4rb0nx1]
 
 
 ### Contributing
