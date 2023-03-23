@@ -66,12 +66,15 @@ while not queue.empty() and len(visited) < MAX_RECURSION:
             print("\nTotal links crawled",len(tot_web))
             print("\nTotal onion links :",len(final_links))
             print("\n---------------------------------------------------------------------------")
-            display = input("display onion links (y/n) : ")
-            if(display == 'y'):
+            command = input('''y: display onion links and continue crawling \nd: continue without displaying onion links\nx:exit crawling (y/d/x) : ''')
+            if(command == 'y'):
                 [print(i) for i in final_links]
+                print("\n continuing to Crawl chief :) \n")
+            elif command == 'd':
+                pass
             else:
                 print("Night Night :) im going back to the shadows!")
-            break
+                break
     except:
         print("Access Denied")
 
