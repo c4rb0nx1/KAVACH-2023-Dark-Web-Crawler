@@ -11,5 +11,7 @@ Features:
 
 
 ```python
+git clone https://github.com/c4rb0nx1/ShadowBot.git
+cd ShadowBot
 pip install -r requirements.txt
 ```
