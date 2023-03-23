@@ -1,10 +1,11 @@
-#This is a dark web crawler....make sure your TOR is configured..up...and running fine.
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
 from queue import Queue
 import socks
 import socket
+import signal
+
 
 # Configure the SOCKS proxy
 socks.set_default_proxy(socks.SOCKS5, "localhost", 9050)
@@ -23,18 +24,17 @@ final_links = []
 
 # Set recursion limit
 MAX_RECURSION = float('inf') #setting recursion limit to infinity!
-
-    
-# Get next URL from queue
-try:
-    while not queue.empty() and len(visited) < MAX_RECURSION:
+count = 1
+while not queue.empty() and len(visited) < MAX_RECURSION:    
+    # Get next URL from queue
+    try:
         url = queue.get()
         # Skip URL if already visited
         if url in visited:
             continue
 
         # Print progress
-        print(f"Crawling {url}...")
+        print(f"Crawling {count} : {url}...")
 
         # Add URL to visited set
         visited.add(url)
@@ -54,17 +54,21 @@ try:
                 if href not in visited:
                     queue.put(href)
             tot_web.add(href)
-except KeyboardInterrupt:
-    print("\n\n\n---------------------------------------------------------------------------")
-    print("\nKeyboardInterrupt detected! Exiting the program.")
-    final_links = [i for i in tot_web if '.onion' in i]
-    print("\nTotal links crawled",len(tot_web))
-except:
-    print("Access Denied")
-finally:
-    print("\nTotal onion links :",len(final_links))
-    print("\n---------------------------------------------------------------------------")
-    display = input("display onion links (y/n) : ")
-    if(display == 'y'):
-        [print(i) for i in final_links]
-    print("Night Night :)")
+        count+=1
+    except KeyboardInterrupt:
+        print("\n\n\n---------------------------------------------------------------------------")
+        print("\nKeyboardInterrupt detected! Exiting the program.")
+        final_links = [i for i in tot_web if '.onion' in i]
+        print("\nTotal links crawled",len(tot_web))
+        print("\nTotal onion links :",len(final_links))
+        print("\n---------------------------------------------------------------------------")
+        display = input("display onion links (y/n) : ")
+        if(display == 'y'):
+            [print(i) for i in final_links]
+        else:
+            print("Night Night :) im going back to the shadows!")
+        break
+    except:
+        print("Access Denied")
+
+    
