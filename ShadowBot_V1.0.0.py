@@ -63,7 +63,7 @@ while not queue.empty() and len(visited) < MAX_RECURSION:
         try:
             final_links = [i for i in tot_web if '.onion' in i]
             print("\n---------------------------------------------------------------------------")
-            command = input('''d: display onion links and continue crawling \nc: show stats and continue without displaying onion links\nx:exit crawling \nEnter (d/c/x) : ''')
+            command = input('''d: display onion links and continue crawling \nc: show stats and continue without displaying onion links\nx: exit crawling \nEnter (d/c/x) : ''')
             if(command == 'd'):
                 [print(i) for i in final_links]
                 print("\n continuing to Crawl chief :) \n")
