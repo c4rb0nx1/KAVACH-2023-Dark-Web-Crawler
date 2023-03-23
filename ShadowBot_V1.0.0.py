@@ -7,7 +7,7 @@ import socket
 import signal
 import time
 
-f = open('links.txt','w',encoding = 'utf-8')
+f = open('onion links.txt','w',encoding = 'utf-8')
 
 # Configure the SOCKS proxy
 socks.set_default_proxy(socks.SOCKS5, "localhost", 9050)
@@ -63,15 +63,16 @@ while not queue.empty() and len(visited) < MAX_RECURSION:
         try:
             final_links = [i for i in tot_web if '.onion' in i]
             print("\n---------------------------------------------------------------------------")
-            command = input('''d: display onion links and continue crawling \nc: continue without displaying onion links\nx:exit crawling \nEnter (d/c/x) : ''')
+            command = input('''d: display onion links and continue crawling \nc: show stats and continue without displaying onion links\nx:exit crawling \nEnter (d/c/x) : ''')
             if(command == 'd'):
-                print("\nTotal onion links :",len(final_links))
-                print("\nTotal links crawled",len(tot_web))
                 [print(i) for i in final_links]
                 print("\n continuing to Crawl chief :) \n")
             elif command == 'c':
+                print("\n---------------------------------------------------------------------------")
+                print("\nStats:")
                 print("\nTotal onion links :",len(final_links))
                 print("\nTotal links crawled",len(tot_web))
+                print("\n---------------------------------------------------------------------------")
                 print("\n continuing to Crawl chief :) \n")
             elif command == 'x':
                 save = input("Do you want to save? (y/n): ")
