@@ -15,3 +15,17 @@ git clone https://github.com/c4rb0nx1/ShadowBot.git
 cd ShadowBot
 pip install -r requirements.txt
 ```
+
+Usage:
+```python
+python3 shadowbot.py
+```
+License
+
+This project is released under the MIT License.
+
+Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
